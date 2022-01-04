@@ -20,7 +20,7 @@ struct ContentView: View {
         if GetCurrentUser() != "" {
             MainView()
         } else {
-            LoginView()
+            SplashView()
         }
     }
 }
@@ -31,32 +31,50 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-//login and main views
+//app views
 
-struct LoginView: View {
+struct SplashView: View {
     var body: some View {
-        Text("A place to keep your stuff in order.").padding(4)
-        
-        Button {
-            //CreateUser(first_name: "frank", last_name: "lopez", first_name_kana: "フランク", last_name_kana: "ロペス", mail_address: "spiccanelforzo@outlook.com", password: "Admin123", password_confirmation: "Admin123")
-            print("Create account")
-        } label: {
-            Text("Create account").padding(4)
+        NavigationView {
+            VStack {
+                Text("A place to keep your stuff in order.").padding(2)
+                
+                NavigationLink(destination: CreateAccountView()) {
+                    Text("Create account")
+                }.padding(2)
+                
+                NavigationLink(destination: SignInView()) {
+                    Text("Sign in")
+                }.padding(2)
+            }
         }
-        //.overlay(RoundedRectangle(cornerRadius: 4.0).stroke(lineWidth: 2.0))
-        
-        Button {
-            print("Sign in")
-        } label: {
-            Text("Sign in").padding(4)
-        }
-        //.overlay(RoundedRectangle(cornerRadius: 4.0).stroke(lineWidth: 2.0))
     }
 }
 
 struct MainView: View {
     var body: some View {
-        Text("A place to keep your stuff in order.").padding()
+        Text("Main view.").padding()
+    }
+}
+
+struct CreateAccountView: View {
+    var body: some View {
+        NavigationView {
+            VStack {
+                Text("Create account view.").padding()
+            }
+        }.navigationBarTitle("Create account")
+    }
+}
+
+struct SignInView: View {
+    var body: some View {
+        NavigationView {
+            VStack {
+                Text("Sign in view.").padding()
+            }
+        }.navigationBarTitle("Sign in")
+//        .navigationBarHidden(true)
     }
 }
 
