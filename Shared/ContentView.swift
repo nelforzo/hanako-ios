@@ -58,10 +58,81 @@ struct MainView: View {
 }
 
 struct CreateAccountView: View {
+    @State private var first_name: String = ""
+    @State private var last_name: String = ""
+    @State private var first_name_kana: String = ""
+    @State private var last_name_kana: String = ""
+    @State private var mail_address: String = ""
+    @State private var password: String = ""
+    @State private var password_confirmation: String = ""
+    
     var body: some View {
         NavigationView {
-            VStack {
-                Text("Create account view.").padding()
+            VStack(
+                alignment: .center, spacing: 10
+            ) {
+                Text("Please enter your details below.")
+                
+                TextField(
+                    "first name",
+                    text: $first_name
+                ).frame(width: 200)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .fixedSize(horizontal: true, vertical: false)
+                
+                TextField(
+                    "last name",
+                    text: $last_name
+                ).frame(width: 200)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .fixedSize(horizontal: true, vertical: false)
+                
+                TextField(
+                    "first name kana",
+                    text: $first_name_kana
+                ).frame(width: 200)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .fixedSize(horizontal: true, vertical: false)
+                
+                TextField(
+                    "last name kana",
+                    text: $last_name_kana
+                ).frame(width: 200)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .fixedSize(horizontal: true, vertical: false)
+                
+                TextField(
+                    "mail address",
+                    text: $mail_address
+                ).frame(width: 200)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .fixedSize(horizontal: true, vertical: false)
+                
+                SecureField(
+                    "password",
+                    text: $password
+                ).frame(width: 200)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .fixedSize(horizontal: true, vertical: false)
+                
+                SecureField(
+                    "password confirmation",
+                    text: $password_confirmation
+                ).frame(width: 200)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .fixedSize(horizontal: true, vertical: false)
+                
+                Button(action: {
+                    print("hey!")
+                }) {
+                    Text("Create account")
+                        .fontWeight(.bold)
+                        .padding(8)
+                        .background(Color.purple)
+                        .foregroundColor(Color.white)
+                        .cornerRadius(8)
+                        .padding(.bottom, 20)
+                }
             }
         }.navigationBarTitle("Create account")
     }
